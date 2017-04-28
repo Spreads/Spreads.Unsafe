@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spreads.Unsafe", "src\Spreads.Unsafe.ilproj", "{04BA3E3C-6979-4792-B19E-C797AD607F42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E107E9C1-E893-4E87-987E-04EF0DCEAEFD}"
+	ProjectSection(SolutionItems) = preProject
+		src\Spreads.Unsafe.xml = src\Spreads.Unsafe.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{EEBD1913-230F-4882-84D2-B48AA8FCA9B9}"
+	ProjectSection(SolutionItems) = preProject
+		dir.props = dir.props
+		README.md = README.md
+		src\Spreads.Unsafe.xml = src\Spreads.Unsafe.xml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04BA3E3C-6979-4792-B19E-C797AD607F42}.Debug|Any CPU.ActiveCfg = netstandard-Windows_NT-Debug|Any CPU
+		{04BA3E3C-6979-4792-B19E-C797AD607F42}.Debug|Any CPU.Build.0 = netstandard-Windows_NT-Debug|Any CPU
+		{04BA3E3C-6979-4792-B19E-C797AD607F42}.Release|Any CPU.ActiveCfg = netstandard1.0-Windows_NT-Release|Any CPU
+		{04BA3E3C-6979-4792-B19E-C797AD607F42}.Release|Any CPU.Build.0 = netstandard1.0-Windows_NT-Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04BA3E3C-6979-4792-B19E-C797AD607F42} = {E107E9C1-E893-4E87-987E-04EF0DCEAEFD}
+	EndGlobalSection
+EndGlobal
