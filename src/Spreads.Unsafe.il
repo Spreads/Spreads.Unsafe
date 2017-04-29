@@ -452,19 +452,11 @@
 	implements class [System.Runtime]System.IComparable`1<!T>
 {
 	// Methods
-	.method public hidebysig newslot abstract virtual 
-		instance !T Add (
-			int64 diff
-		) cil managed 
-	{
-	} // end of method IInt64Diffable`1::Add
-
-	.method public hidebysig newslot abstract virtual 
-		instance int64 Diff (
-			!T other
-		) cil managed 
-	{
-	} // end of method IInt64Diffable`1::Diff
+    .method public hidebysig newslot abstract virtual instance !T Add (int64 diff) cil managed 
+    { } // end of method IInt64Diffable`1::Add
+        
+    .method public hidebysig newslot abstract virtual instance int64 Diff (!T other) cil managed 
+    { } // end of method IInt64Diffable`1::Diff
 
 } // end of class Spreads.IInt64Diffable`1
 
@@ -472,20 +464,12 @@
 .class interface public auto ansi abstract Spreads.IDelta`1<T>
 {
 	// Methods
-	.method public hidebysig newslot abstract virtual 
-		instance !T AddDelta (
-			!T delta
-		) cil managed 
-	{
-	} // end of method IDelta`1::AddDelta
-
-	.method public hidebysig newslot abstract virtual 
-		instance !T GetDelta (
-			!T other
-		) cil managed 
-	{
-	} // end of method IDelta`1::GetDelta
-
+    .method public hidebysig newslot abstract virtual instance !T AddDelta (!T delta) cil managed 
+    { } // end of method IDelta`1::AddDelta
+    
+    .method public hidebysig newslot abstract virtual instance !T GetDelta (!T other) cil managed 
+    { } // end of method IDelta`1::GetDelta
+    
 } // end of class Spreads.IDelta`1
 
 
