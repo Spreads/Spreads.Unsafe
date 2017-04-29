@@ -378,7 +378,28 @@
         constrained. !!T
         callvirt instance int32 class [System.Runtime]System.IComparable`1<!!T>::CompareTo(!0)
         ret 
-  } // end of method Unsafe::CompareConstrained
+  } // end of method Unsafe::CompareToConstrained
+
+  .method public hidebysig static bool EqualsConstrained<T>(!!T left, !!T right) cil managed aggressiveinlining
+  {
+        .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
+        .maxstack 8
+        ldarga.s left
+        ldarg.1
+        constrained. !!T
+        callvirt instance int32 class [System.Runtime]System.IEquatable`1<!!T>::Equals(!0)
+        ret 
+  } // end of method Unsafe::EqualsConstrained
+
+  .method public hidebysig static int32 GetHashCodeConstrained<T>(!!T obj) cil managed aggressiveinlining
+  {
+        .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
+        .maxstack 8
+        ldarga.s obj
+        constrained. !!T
+        callvirt instance int32 [System.Runtime]System.Object::GetHashCode()
+        ret 
+  } // end of method Unsafe::GetHashCodeConstrained
 
 
 } // end of class Spreads.Unsafe
