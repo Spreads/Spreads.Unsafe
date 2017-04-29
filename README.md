@@ -1,11 +1,15 @@
 Spreads.Unsafe
 ==============
 
-This repo adds a single method to `System.Runtime.CompilerServices.Unsafe` [package](https://github.com/dotnet/corefx/tree/master/src/System.Runtime.CompilerServices.Unsafe) and repackages it. 
+This repo adds several methods to `System.Runtime.CompilerServices.Unsafe` [package](https://github.com/dotnet/corefx/tree/master/src/System.Runtime.CompilerServices.Unsafe) and repackages it. 
 It could be compiled from a working repo of [corefx](https://github.com/dotnet/corefx) if placed alogside 
 with `S.R.CS.U` folder.
 
-The added method is:
+
+The added methods emit a constrained call to methods of known interfaces on instances of a generic type `T` 
+without a type constraint `where T : IKnownInterface<T>`.
+
+For example, calling the `IComparable<T>.CompareTo` method:
 
 
 ```
@@ -21,7 +25,23 @@ The added method is:
   } // end of method Unsafe::CompareConstrained
 ```
 
-It emits a constrained call to `IComparable<T>.CompareTo()` method on instances of a generic type `T` 
-without a type constraint `where T : IComparable<T>`.
+In addition to `IComparable<T>` there are `IEquatable<T>` interface and the following custom ones:
 
-Available on NuGet as `Spreads.Unsafe`.
+
+```
+public interface IInt64Diffable<T> : IComparable<T>
+{
+    T Add(long diff);
+    long Diff(T other);
+}
+
+public interface IDelta<T>
+{
+    T AddDelta(T delta);
+    T GetDelta(T other);
+}
+
+```
+
+Available on NuGet as `Spreads.Unsafe`. Tests and a compiled dll are in the main Spreads project.
+A use case/sample is [here](https://github.com/Spreads/Spreads/blob/master/src/Spreads.Core/KeyComparer.cs).

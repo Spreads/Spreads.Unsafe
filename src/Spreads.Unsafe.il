@@ -387,7 +387,7 @@
         ldarga.s left
         ldarg.1
         constrained. !!T
-        callvirt instance int32 class [System.Runtime]System.IEquatable`1<!!T>::Equals(!0)
+        callvirt instance bool class [System.Runtime]System.IEquatable`1<!!T>::Equals(!0)
         ret 
   } // end of method Unsafe::EqualsConstrained
 
@@ -401,8 +401,93 @@
         ret 
   } // end of method Unsafe::GetHashCodeConstrained
 
+  .method public hidebysig static !!T AddDeltaConstrained<T>(!!T obj, !!T delta) cil managed aggressiveinlining
+  {
+        .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
+        .maxstack 8
+        ldarga.s obj
+        ldarg.1
+        constrained. !!T
+        callvirt instance !0 class Spreads.IDelta`1<!!T>::AddDelta(!0)
+        ret 
+  } // end of method Unsafe::AddDeltaConstrained
+
+  .method public hidebysig static !!T GetDeltaConstrained<T>(!!T obj, !!T other) cil managed aggressiveinlining
+  {
+        .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
+        .maxstack 8
+        ldarga.s obj
+        ldarg.1
+        constrained. !!T
+        callvirt instance !0 class Spreads.IDelta`1<!!T>::GetDelta(!0)
+        ret 
+  } // end of method Unsafe::GetDeltaConstrained
+
+  .method public hidebysig static !!T AddLongConstrained<T>(!!T obj, int64 delta) cil managed aggressiveinlining
+  {
+        .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
+        .maxstack 8
+        ldarga.s obj
+        ldarg.1
+        constrained. !!T
+        callvirt instance !0 class Spreads.IInt64Diffable`1<!!T>::Add(int64)
+        ret 
+  } // end of method Unsafe::AddLongConstrained
+
+  .method public hidebysig static int64 DiffLongConstrained<T>(!!T left, !!T right) cil managed aggressiveinlining
+  {
+        .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
+        .maxstack 8
+        ldarga.s left
+        ldarg.1
+        constrained. !!T
+        callvirt instance int64 class Spreads.IInt64Diffable`1<!!T>::Diff(!0)
+        ret 
+  } // end of method Unsafe::AddLongConstrained
 
 } // end of class Spreads.Unsafe
+
+
+.class interface public auto ansi abstract Spreads.IInt64Diffable`1<T>
+	implements class [System.Runtime]System.IComparable`1<!T>
+{
+	// Methods
+	.method public hidebysig newslot abstract virtual 
+		instance !T Add (
+			int64 diff
+		) cil managed 
+	{
+	} // end of method IInt64Diffable`1::Add
+
+	.method public hidebysig newslot abstract virtual 
+		instance int64 Diff (
+			!T other
+		) cil managed 
+	{
+	} // end of method IInt64Diffable`1::Diff
+
+} // end of class Spreads.IInt64Diffable`1
+
+
+.class interface public auto ansi abstract Spreads.IDelta`1<T>
+{
+	// Methods
+	.method public hidebysig newslot abstract virtual 
+		instance !T AddDelta (
+			!T delta
+		) cil managed 
+	{
+	} // end of method IDelta`1::AddDelta
+
+	.method public hidebysig newslot abstract virtual 
+		instance !T GetDelta (
+			!T other
+		) cil managed 
+	{
+	} // end of method IDelta`1::GetDelta
+
+} // end of class Spreads.IDelta`1
+
 
 .class private auto ansi sealed beforefieldinit System.Runtime.Versioning.NonVersionableAttribute
        extends [CORE_ASSEMBLY]System.Attribute
