@@ -37,7 +37,7 @@
     01 00 00 00 00
   ) // false
   .hash algorithm 0x00008004
-  .ver 4:0:3:0
+  .ver 1:0:0:0
 }
 .module Spreads.Unsafe.dll
 // MVID: {1E97D84A-565B-49C5-B60A-F31A1A4ACE13}
@@ -369,77 +369,92 @@
         ret 
   } // end of method Unsafe::AreSame
 
-  .method public hidebysig static int32 CompareToConstrained<T>(!!T left, !!T right) cil managed aggressiveinlining
+  .method public hidebysig static int32 CompareToConstrained<T>(!!T& left, !!T& right) cil managed aggressiveinlining
   {
         .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
         .maxstack 8
-        ldarga.s left
+        ldarg.0
         ldarg.1
+        ldobj !!T
         constrained. !!T
         callvirt instance int32 class [System.Runtime]System.IComparable`1<!!T>::CompareTo(!0)
         ret 
   } // end of method Unsafe::CompareToConstrained
 
-  .method public hidebysig static bool EqualsConstrained<T>(!!T left, !!T right) cil managed aggressiveinlining
+  .method public hidebysig static bool EqualsConstrained<T>(!!T& left, !!T& right) cil managed aggressiveinlining
   {
         .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
         .maxstack 8
-        ldarga.s left
+        ldarg.0
         ldarg.1
+        ldobj !!T
         constrained. !!T
         callvirt instance bool class [System.Runtime]System.IEquatable`1<!!T>::Equals(!0)
         ret 
   } // end of method Unsafe::EqualsConstrained
 
-  .method public hidebysig static int32 GetHashCodeConstrained<T>(!!T obj) cil managed aggressiveinlining
+  .method public hidebysig static int32 GetHashCodeConstrained<T>(!!T& obj) cil managed aggressiveinlining
   {
         .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
         .maxstack 8
-        ldarga.s obj
+        ldarg.0
         constrained. !!T
         callvirt instance int32 [System.Runtime]System.Object::GetHashCode()
         ret 
   } // end of method Unsafe::GetHashCodeConstrained
 
-  .method public hidebysig static !!T AddDeltaConstrained<T>(!!T obj, !!T delta) cil managed aggressiveinlining
+  .method public hidebysig static void DisposeConstrained<T>(!!T& obj) cil managed aggressiveinlining
   {
         .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
         .maxstack 8
-        ldarga.s obj
+        ldarg.0
+        constrained. !!T
+        callvirt instance void [System.Runtime]System.IDisposable::Dispose()
+        ret
+  } // end of method Unsafe::GetHashCodeConstrained
+
+  .method public hidebysig static !!T AddDeltaConstrained<T>(!!T& obj, !!T& delta) cil managed aggressiveinlining
+  {
+        .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
+        .maxstack 8
+        ldarg.0
         ldarg.1
+        ldobj !!T
         constrained. !!T
         callvirt instance !0 class Spreads.IDelta`1<!!T>::AddDelta(!0)
         ret 
   } // end of method Unsafe::AddDeltaConstrained
 
-  .method public hidebysig static !!T GetDeltaConstrained<T>(!!T obj, !!T other) cil managed aggressiveinlining
+  .method public hidebysig static !!T GetDeltaConstrained<T>(!!T& obj, !!T& other) cil managed aggressiveinlining
   {
         .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
         .maxstack 8
-        ldarga.s obj
+        ldarg.0
         ldarg.1
+        ldobj !!T
         constrained. !!T
         callvirt instance !0 class Spreads.IDelta`1<!!T>::GetDelta(!0)
         ret 
   } // end of method Unsafe::GetDeltaConstrained
 
-  .method public hidebysig static !!T AddLongConstrained<T>(!!T obj, int64 delta) cil managed aggressiveinlining
+  .method public hidebysig static !!T AddLongConstrained<T>(!!T& obj, int64 delta) cil managed aggressiveinlining
   {
         .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
         .maxstack 8
-        ldarga.s obj
+        ldarg.0
         ldarg.1
         constrained. !!T
         callvirt instance !0 class Spreads.IInt64Diffable`1<!!T>::Add(int64)
         ret 
   } // end of method Unsafe::AddLongConstrained
 
-  .method public hidebysig static int64 DiffLongConstrained<T>(!!T left, !!T right) cil managed aggressiveinlining
+  .method public hidebysig static int64 DiffLongConstrained<T>(!!T& left, !!T& right) cil managed aggressiveinlining
   {
         .custom instance void System.Runtime.Versioning.NonVersionableAttribute::.ctor() = ( 01 00 00 00 )
         .maxstack 8
-        ldarga.s left
+        ldarg.0
         ldarg.1
+        ldobj !!T
         constrained. !!T
         callvirt instance int64 class Spreads.IInt64Diffable`1<!!T>::Diff(!0)
         ret 
