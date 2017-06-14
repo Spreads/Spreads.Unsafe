@@ -91,7 +91,7 @@ public int Compare(T x, T y)
 
 ```
 
-But even if such optimizatoin breaks in this particular case (see the linked discussion) then checking a static bool field is 
+But even if such optimization breaks in this particular case (see the linked discussion) then checking a static bool field is 
 still much cheaper than a virtual call, especially given that its value is constant for the lifetime of a program and branch 
 prediction should be 100% effective.
 

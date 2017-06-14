@@ -411,7 +411,7 @@
         constrained. !!T
         callvirt instance void [System.Runtime]System.IDisposable::Dispose()
         ret
-  } // end of method Unsafe::GetHashCodeConstrained
+  } // end of method Unsafe::DisposeConstrained
 
   .method public hidebysig static !!T AddDeltaConstrained<T>(!!T& obj, !!T& delta) cil managed aggressiveinlining
   {
